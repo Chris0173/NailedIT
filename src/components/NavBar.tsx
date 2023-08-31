@@ -6,9 +6,9 @@ const NavBar = () => {
   return (
     <nav>
       <HStack justifyContent={"space-between"}>
-        <Image src={logo} boxSize={55} marginLeft={2} />
+        <Image src={logo} boxSize="55" marginLeft={2} />
         <Text fontSize={"xx-large"}>NailedIT</Text>
-        <Button>Login</Button>
+        <Button marginRight={2}>Login</Button>
       </HStack>
     </nav>
   );
