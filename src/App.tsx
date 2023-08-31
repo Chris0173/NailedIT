@@ -1,6 +1,8 @@
+import "./App.css";
 import NavBar from "./components/NavBar";
-import CurrentProjectsHomeScreen from "./components/CurrentProjectsHomeScreen";
-import { Divider } from "@chakra-ui/react";
+import HomeScreenCurrentProjectsSection from "./components/HomeScreenCurrentProjectsSection";
+import HomeScreenCompletedProjectsSection from "./components/HomeScreenCompletedProjectsSection";
+import { Divider, Text } from "@chakra-ui/react";
 
 function App() {
   return (
@@ -10,10 +12,18 @@ function App() {
       </div>
       <div className="MainBody">
         <div className="CurrentProjects">
-          <CurrentProjectsHomeScreen />
+          <Text className="HomeScreenCardSectionLabels">Current Projects:</Text>
+          <HomeScreenCurrentProjectsSection />
         </div>
         <br />
         <Divider width="80%" marginLeft={20} />
+        <br />
+        <div className="CompletedProjects">
+          <Text className="HomeScreenCardSectionLabels">
+            Completed Projects:
+          </Text>
+          <HomeScreenCompletedProjectsSection />
+        </div>
       </div>
     </>
   );
