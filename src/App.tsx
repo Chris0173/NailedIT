@@ -1,30 +1,29 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import HomeScreenCurrentProjectsSection from "./components/HomeScreenCurrentProjectsSection";
-import HomeScreenCompletedProjectsSection from "./components/HomeScreenCompletedProjectsSection";
-import { Divider, Text } from "@chakra-ui/react";
+import HomeScreen from "./pages/HomeScreen";
+import TopPriorities from "./components/TopPriorities";
+import ProjectsPage from "./pages/ProjectsPage";
 
 function App() {
   return (
     <>
-      <div className="NavBar">
-        <NavBar />
-      </div>
-      <div className="MainBody">
-        <div className="CurrentProjects">
-          <Text className="HomeScreenCardSectionLabels">Current Projects:</Text>
-          <HomeScreenCurrentProjectsSection />
+      <Router>
+        <div className="NavBar">
+          <NavBar />
         </div>
-        <br />
-        <Divider width="80%" marginLeft={20} />
-        <br />
-        <div className="CompletedProjects">
-          <Text className="HomeScreenCardSectionLabels">
-            Completed Projects:
-          </Text>
-          <HomeScreenCompletedProjectsSection />
+        <div className="home">
+          <HomeScreen />
+          <TopPriorities />
         </div>
-      </div>
+        <div className="MainBody"></div>
+        <div className="Routes">
+          <Routes>
+            <Route path="/" Component={HomeScreen} />
+            <Route path="projects" Component={ProjectsPage} />
+          </Routes>
+        </div>
+      </Router>
     </>
   );
 }

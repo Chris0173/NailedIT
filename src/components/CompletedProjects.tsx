@@ -10,13 +10,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const HomeScreenCurrentProjectsSection = () => {
+const CompletedProjects = () => {
   return (
     <>
       <div className="CurrentProjectGridContainer">
         <div className="CurrentProjectGrid">
           <SimpleGrid
-            marginLeft={20}
             spacing={12}
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
@@ -78,4 +77,4 @@ const HomeScreenCurrentProjectsSection = () => {
   );
 };
 
-export default HomeScreenCurrentProjectsSection;
+export default CompletedProjects;

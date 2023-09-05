@@ -10,18 +10,17 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const HomeScreenCompletedProjectsSection = () => {
+const CurrentProjects = () => {
   return (
     <>
-      <div className="CompletedProjectGridContainer">
-        <div className="CompletedProjectGrid">
+      <div className="CurrentProjectGridContainer">
+        <div className="CurrentProjectGrid">
           <SimpleGrid
-            marginLeft={20}
             spacing={12}
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
             <Card>
-              <CardHeader className="CompletedProjectHeading">
+              <CardHeader className="CurrentProjectHeading">
                 <Heading size="md"> 15 Example Road</Heading>
                 <br />
                 <Divider />
@@ -38,7 +37,7 @@ const HomeScreenCompletedProjectsSection = () => {
               </CardFooter>
             </Card>
             <Card>
-              <CardHeader className="CompletedProjectHeading">
+              <CardHeader className="CurrentProjectHeading">
                 <Heading size="md"> 57A Sample Street</Heading>
                 <br />
                 <Divider />
@@ -53,7 +52,7 @@ const HomeScreenCompletedProjectsSection = () => {
               </CardFooter>
             </Card>
             <Card>
-              <CardHeader className="CompletedProjectHeading">
+              <CardHeader className="CurrentProjectHeading">
                 <Heading size="md"> 36 Winter cresent</Heading>
                 <br />
                 <Divider />
@@ -78,4 +77,4 @@ const HomeScreenCompletedProjectsSection = () => {
   );
 };
 
-export default HomeScreenCompletedProjectsSection;
+export default CurrentProjects;
