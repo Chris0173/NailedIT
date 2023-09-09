@@ -13,14 +13,14 @@ import {
 const CompletedProjects = () => {
   return (
     <>
-      <div className="CurrentProjectGridContainer">
-        <div className="CurrentProjectGrid">
+      <div className="CompletedProjectGridContainer">
+        <div className="CompletedProjectGrid">
           <SimpleGrid
             spacing={12}
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
             <Card>
-              <CardHeader className="CurrentProjectHeading">
+              <CardHeader className="CompletedProjectHeading">
                 <Heading size="md"> 15 Example Road</Heading>
                 <br />
                 <Divider />
@@ -37,7 +37,7 @@ const CompletedProjects = () => {
               </CardFooter>
             </Card>
             <Card>
-              <CardHeader className="CurrentProjectHeading">
+              <CardHeader className="CompletedProjectHeading">
                 <Heading size="md"> 57A Sample Street</Heading>
                 <br />
                 <Divider />
@@ -52,7 +52,7 @@ const CompletedProjects = () => {
               </CardFooter>
             </Card>
             <Card>
-              <CardHeader className="CurrentProjectHeading">
+              <CardHeader className="CompletedProjectHeading">
                 <Heading size="md"> 36 Winter cresent</Heading>
                 <br />
                 <Divider />

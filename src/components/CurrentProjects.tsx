@@ -9,6 +9,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
+import "../componentCSS/CurrentProjects.css";
 
 const CurrentProjects = () => {
   return (
@@ -19,7 +20,7 @@ const CurrentProjects = () => {
             spacing={12}
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
-            <Card>
+            <Card className="Card">
               <CardHeader className="CurrentProjectHeading">
                 <Heading size="md"> 15 Example Road</Heading>
                 <br />
