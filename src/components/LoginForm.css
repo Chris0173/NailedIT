@@ -1,43 +1,63 @@
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #a15344;
-    border-radius: 8px;
-    box-sizing: border-box;
+
+/*Main Form*/
+
+.login-form {
+    max-width: 100%;
+    border: width 2px; 
+    border-radius: 12px;
+    box-shadow: coral;
+    background-color: #f6cf9a;
 }
 
-input[type=submit] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+.input-field {
     border-radius: 4px;
-    cursor: pointer;
-  }
-
-input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #949298 ;
+    width: 12vw;
+    height: 2vw;
+    margin: 2%;
 }
 
-.loginFormContatiner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+::placeholder {
+    color: #474454;
+    padding: 5px;
+    font-weight: 300;
 }
 
-.LoginForm {
-    border-radius: 8px;
-    background-color: #c0786a;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+/*Login Section*/
+
+.login-header {
+    color: #474454;
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: 2%;
+}
+
+.login-image {
+    padding-left: 15%;
+    margin-bottom: 1.15vw;
+}
+
+Text, a {
+    color: #2F98C2;
+    margin-left: 2%;
+}
+
+.login-button {
+    margin-top: 25%;
+    margin-left: 2%;
+    background-color: #2F98C2;
+}
+
+/*Register Section*/
+
+.Register-Header {
+    margin-top: 2vw;;
+    margin-bottom: 5vw;
+    color: #474454;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 1.3vw;
+}
+
+.register-button {
+    margin-top: 5%;
+    background-color: #2F98C2;
 }
