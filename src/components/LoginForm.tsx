@@ -15,9 +15,12 @@ const LoginForm = () => {
   return (
     <Flex align="center" justify="center" minH="100vh">
       <Box className="login-form" p={8}>
-        <Flex className="form-section" direction="row">
+        <Flex
+          className="form-section"
+          direction={{ base: "column", md: "row" }}
+        >
           {/* Login Section */}
-          <Box flex={1} pr={2}>
+          <Box flex={1} pr={{ base: 0, md: 2 }}>
             <Image src={Logo} height="110px" className="login-image" />
             <Heading className="login-header" size="md" textAlign="left" mb={2}>
               Login
@@ -45,7 +48,7 @@ const LoginForm = () => {
           <Divider orientation="vertical" mx={3} />
 
           {/* Register Section */}
-          <Box flex={1} pl={{ base: 0, md: 4 }} pr={{ base: 0, md: 4 }}>
+          <Box flex={1} pl={{ base: 0, md: 4 }}>
             <Heading
               className="Register-Header"
               size="md"

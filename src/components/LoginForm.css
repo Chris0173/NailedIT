@@ -61,3 +61,11 @@ Text, a {
     margin-top: 5%;
     background-color: #2F98C2;
 }
+
+/* Media Query */
+@media (max-width: 768px) {
+    .input-field {
+        width: 80%;
+        height: 60%;
+    }
+}
