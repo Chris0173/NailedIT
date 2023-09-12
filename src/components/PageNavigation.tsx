@@ -31,6 +31,16 @@ const DropNavigation = () => {
               Documents
             </ChakraLink>
           </MenuItem>
+          <MenuItem>
+            <ChakraLink as={ReactRouterLink} to="/inventory">
+              Inventory
+            </ChakraLink>
+          </MenuItem>
+          <MenuItem>
+            <ChakraLink as={ReactRouterLink} to="/calendar">
+              Calendar
+            </ChakraLink>
+          </MenuItem>
         </MenuList>
       </Menu>
     </>

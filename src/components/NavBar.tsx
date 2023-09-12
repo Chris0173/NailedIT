@@ -1,4 +1,4 @@
-import { Image, Text, Button, HStack } from "@chakra-ui/react";
+import { Image, Text, HStack, Avatar } from "@chakra-ui/react";
 import logo from "../assets/logo.png";
 import "./LoginForm";
 import "../CSS/NavBar.css";
@@ -9,7 +9,7 @@ const NavBar = () => {
       <HStack justifyContent="space-between">
         <Image src={logo} width="100px" marginLeft="1%" />
         <Text fontSize={"xx-large"}>NailedIT</Text>
-        <Button marginRight={2}>Login</Button>
+        <Avatar name="Example User" src="" marginRight="10px" />
       </HStack>
     </nav>
   );
