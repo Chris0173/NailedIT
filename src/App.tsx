@@ -10,8 +10,10 @@ function App() {
   return (
     <>
       <Router>
-        <NavBar />
-        <PageNavigation />
+        <div className="app">
+          <NavBar />
+          <PageNavigation />
+        </div>
         <div className="Routes">
           <Routes>
             <Route path="/home" element={<HomeScreen />} />

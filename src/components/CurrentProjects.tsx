@@ -10,6 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import "../CSS/CurrentProjects.css";
+import { AddIcon } from "@chakra-ui/icons";
 
 const CurrentProjects = () => {
   return (
@@ -73,6 +74,14 @@ const CurrentProjects = () => {
               </CardFooter>
             </Card>
           </SimpleGrid>
+          <Button
+            className="addProjectButton"
+            rightIcon={<AddIcon />}
+            colorScheme="orange"
+            variant="solid"
+          >
+            Add Project
+          </Button>
         </div>
       </div>
     </>

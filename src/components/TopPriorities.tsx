@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Card,
   CardBody,
   CardHeader,
@@ -8,6 +9,8 @@ import {
   StackDivider,
   Text,
 } from "@chakra-ui/react";
+import "../CSS/TopPriorities.css";
+import { AddIcon } from "@chakra-ui/icons";
 
 const TopPriorities = () => {
   return (
@@ -43,6 +46,14 @@ const TopPriorities = () => {
                 Meeting with stephen fury for team lead position.
               </Text>
             </Box>
+            <Button
+              className="addTopPriorityButton"
+              rightIcon={<AddIcon />}
+              colorScheme="orange"
+              variant="solid"
+            >
+              Add Priority
+            </Button>
           </Stack>
         </CardBody>
       </Card>
