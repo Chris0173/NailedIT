@@ -1,19 +1,17 @@
-import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
+import "../CSS/NavBar.css";
 
 const DropNavigation = () => {
   return (
     <>
       <Menu>
         <MenuButton
-          className="PagesButton"
-          color={"black"}
-          bg={"green.100"}
-          fontSize={20}
-          fontWeight={600}
-          textDecoration="underline"
-          marginLeft={10}
+          as={Button}
+          rightIcon={<ChevronDownIcon />}
+          className="pagesButton"
         >
           Pages
         </MenuButton>

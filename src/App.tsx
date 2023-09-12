@@ -3,12 +3,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeScreen from "./pages/HomeScreen";
 import ProjectsPage from "./pages/ProjectsPage";
 import LoginForm from "./components/LoginForm";
+import NavBar from "./components/NavBar";
+import PageNavigation from "./components/PageNavigation";
 
 function App() {
   return (
     <>
       <Router>
-        <LoginForm />
+        <NavBar />
+        <PageNavigation />
         <div className="Routes">
           <Routes>
             <Route path="/home" element={<HomeScreen />} />

@@ -8,7 +8,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import "./LoginForm.css";
+import "../CSS/LoginForm.css";
 import Logo from "../assets/logo.png";
 
 const LoginForm = () => {

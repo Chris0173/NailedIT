@@ -9,12 +9,13 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import "../componentCSS/CurrentProjects.css";
+import "../CSS/CurrentProjects.css";
 
 const CurrentProjects = () => {
   return (
     <>
       <div className="CurrentProjectGridContainer">
+        <h1 className="currentProjectTitle">Current Projects:</h1>
         <div className="CurrentProjectGrid">
           <SimpleGrid
             spacing={12}
@@ -37,7 +38,7 @@ const CurrentProjects = () => {
                 <Button>View here</Button>
               </CardFooter>
             </Card>
-            <Card>
+            <Card className="Card">
               <CardHeader className="CurrentProjectHeading">
                 <Heading size="md"> 57A Sample Street</Heading>
                 <br />
@@ -52,7 +53,7 @@ const CurrentProjects = () => {
                 <Button>View here</Button>
               </CardFooter>
             </Card>
-            <Card>
+            <Card className="Card">
               <CardHeader className="CurrentProjectHeading">
                 <Heading size="md"> 36 Winter cresent</Heading>
                 <br />
