@@ -6,7 +6,7 @@ import {
   AccordionIcon,
 } from "@chakra-ui/accordion";
 import "../CSS/DocumentsPage.css";
-import { Box } from "@chakra-ui/react";
+import { Box, Divider } from "@chakra-ui/react";
 
 const DocumentsPage = () => {
   return (
@@ -26,7 +26,7 @@ const DocumentsPage = () => {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pb={4}>
+            <AccordionPanel pb={4} className="accordionContent">
               This will display the results for Contracts
             </AccordionPanel>
           </AccordionItem>
@@ -43,7 +43,7 @@ const DocumentsPage = () => {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pb={4}>
+            <AccordionPanel pb={4} className="accordionContent">
               This will display the results for Blueprints
             </AccordionPanel>
           </AccordionItem>
@@ -60,7 +60,7 @@ const DocumentsPage = () => {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pb={4}>
+            <AccordionPanel pb={4} className="accordionContent">
               This will display the results for Permits & Licences
             </AccordionPanel>
           </AccordionItem>
@@ -77,7 +77,7 @@ const DocumentsPage = () => {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pb={4}>
+            <AccordionPanel pb={4} className="accordionContent">
               This will display the results for Safety Documentation
             </AccordionPanel>
           </AccordionItem>
@@ -94,11 +94,12 @@ const DocumentsPage = () => {
               </Box>
               <AccordionIcon />
             </AccordionButton>
-            <AccordionPanel pb={4}>
+            <AccordionPanel pb={4} className="accordionContent">
               This will display the results for Photos & Media
             </AccordionPanel>
           </AccordionItem>
         </Accordion>
+        <Divider />
       </div>
     </div>
   );
