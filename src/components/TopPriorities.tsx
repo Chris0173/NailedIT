@@ -17,7 +17,7 @@ const TopPriorities = () => {
     <div className="cardContainer">
       <Card align="center">
         <CardHeader>
-          <Heading size="md">Top Priorities</Heading>
+          <Heading size="md">Top Priorities:</Heading>
         </CardHeader>
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">

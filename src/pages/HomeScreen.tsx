@@ -4,8 +4,8 @@ import TopPriorities from "../components/TopPriorities";
 const HomeScreen = () => {
   return (
     <>
-      <CurrentProjects />
       <TopPriorities />
+      <CurrentProjects />
     </>
   );
 };

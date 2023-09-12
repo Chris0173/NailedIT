@@ -9,17 +9,20 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
+import "../CSS/CompletedProjects.css";
+import { AddIcon } from "@chakra-ui/icons";
 
 const CompletedProjects = () => {
   return (
     <>
       <div className="CompletedProjectGridContainer">
+        <h1 className="completedProjectTitle">Completed Projects:</h1>
         <div className="CompletedProjectGrid">
           <SimpleGrid
             spacing={12}
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
-            <Card>
+            <Card className="CompletedCard">
               <CardHeader className="CompletedProjectHeading">
                 <Heading size="md"> 15 Example Road</Heading>
                 <br />
@@ -36,7 +39,7 @@ const CompletedProjects = () => {
                 <Button>View here</Button>
               </CardFooter>
             </Card>
-            <Card>
+            <Card className="CompletedCard">
               <CardHeader className="CompletedProjectHeading">
                 <Heading size="md"> 57A Sample Street</Heading>
                 <br />
@@ -51,7 +54,7 @@ const CompletedProjects = () => {
                 <Button>View here</Button>
               </CardFooter>
             </Card>
-            <Card>
+            <Card className="CompletedCard">
               <CardHeader className="CompletedProjectHeading">
                 <Heading size="md"> 36 Winter cresent</Heading>
                 <br />
@@ -71,6 +74,14 @@ const CompletedProjects = () => {
               </CardFooter>
             </Card>
           </SimpleGrid>
+          <Button
+            className="viewAllCompletedButton"
+            rightIcon={<AddIcon />}
+            colorScheme="orange"
+            variant="solid"
+          >
+            View All
+          </Button>
         </div>
       </div>
     </>
