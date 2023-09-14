@@ -1,18 +1,35 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  SimpleGrid,
-  Button,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { SimpleGrid, Button } from "@chakra-ui/react";
 import "../CSS/CurrentProjects.css";
 import { AddIcon } from "@chakra-ui/icons";
+import ProjectCard from "./ProjectCard";
+import AddProjectForm, { FormData } from "./AddProjectForm";
+import { Project } from "./ProjectCard";
 
 const CurrentProjects = () => {
+  const [showForm, setShowForm] = useState(false);
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  const handleOnclick = () => {
+    setShowForm(!showForm);
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    setProjects([...projects, formData]);
+    setShowForm(false);
+  };
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/projects`)
+      .then((response) => response.json())
+      .then((data) => {
+        setProjects(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <div className="CurrentProjectGridContainer">
@@ -22,66 +39,20 @@ const CurrentProjects = () => {
             spacing={12}
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
-            <Card className="Card">
-              <CardHeader className="CurrentProjectHeading">
-                <Heading size="md"> 15 Example Road</Heading>
-                <br />
-                <Divider />
-              </CardHeader>
-              <CardBody>
-                <Text>
-                  65m fencing job <br /> Lead: Michael Scott
-                </Text>
-                <br />
-                <Text>15 Example Road Pretend City, 05158</Text>
-              </CardBody>
-              <CardFooter>
-                <Button>View here</Button>
-              </CardFooter>
-            </Card>
-            <Card className="Card">
-              <CardHeader className="CurrentProjectHeading">
-                <Heading size="md"> 57A Sample Street</Heading>
-                <br />
-                <Divider />
-              </CardHeader>
-              <CardBody>
-                <Text>80m Retaining wall w/ general maintainence</Text>
-                <br />
-                <Text>57A Sample Street Springfield, 15435</Text>
-              </CardBody>
-              <CardFooter>
-                <Button>View here</Button>
-              </CardFooter>
-            </Card>
-            <Card className="Card">
-              <CardHeader className="CurrentProjectHeading">
-                <Heading size="md"> 36 Winter cresent</Heading>
-                <br />
-                <Divider />
-              </CardHeader>
-              <CardBody>
-                <Text>
-                  Estate Rebuild <br /> Lead: John Smith
-                </Text>
-                <br />
-                <Text>
-                  36 Winter cresent <br /> Castle Rock, 54218
-                </Text>
-              </CardBody>
-              <CardFooter>
-                <Button>View here</Button>
-              </CardFooter>
-            </Card>
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
           </SimpleGrid>
           <Button
             className="addProjectButton"
             rightIcon={<AddIcon />}
             colorScheme="orange"
             variant="solid"
+            onClick={handleOnclick}
           >
             Add Project
           </Button>
+          {showForm && <AddProjectForm onSubmit={handleSubmit} />}
         </div>
       </div>
     </>

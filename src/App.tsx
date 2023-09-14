@@ -5,7 +5,6 @@ import ProjectsPage from "./pages/ProjectsPage";
 import DocumentsPage from "./pages/DocumentsPage";
 import InventoryPage from "./pages/InventoryPage";
 import CalendarPage from "./pages/CalendarPage";
-import LoginForm from "./components/LoginForm";
 import NavBar from "./components/NavBar";
 import PageNavigation from "./components/PageNavigation";
 
