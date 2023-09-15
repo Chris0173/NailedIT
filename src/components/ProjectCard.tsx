@@ -23,6 +23,12 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, handleDelete }: ProjectCardProps) {
+  const confirmDeletion = () => {
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      handleDelete(project.id);
+    }
+  };
+
   return (
     <Card className="card">
       <CardHeader className="projectHeading">
@@ -37,7 +43,7 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
       </CardBody>
       <CardFooter>
         <Button>View here</Button>
-        <Button onClick={() => handleDelete(project.id)} colorScheme="red">
+        <Button onClick={confirmDeletion} colorScheme="red">
           Delete
         </Button>
       </CardFooter>

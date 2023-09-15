@@ -39,24 +39,26 @@ const CurrentProjects = () => {
   };
 
   const handleDelete = (projectId: number) => {
-    fetch(`http://localhost:3001/api/projects/${projectId}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to delete project");
-        }
-        return response.json();
+    if (window.confirm("Are you sure you want to delete this project?")) {
+      fetch(`http://localhost:3001/api/projects/${projectId}`, {
+        method: "DELETE",
       })
-      .then(() => {
-        const updatedProjects = projects.filter(
-          (project) => project.id !== projectId
-        );
-        setProjects(updatedProjects);
-      })
-      .catch((error) => {
-        console.error("Error deleting project:", error);
-      });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to delete project");
+          }
+          return response.json();
+        })
+        .then(() => {
+          const updatedProjects = projects.filter(
+            (project) => project.id !== projectId
+          );
+          setProjects(updatedProjects);
+        })
+        .catch((error) => {
+          console.error("Error deleting project:", error);
+        });
+    }
   };
 
   useEffect(() => {
