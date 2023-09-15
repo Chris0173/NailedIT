@@ -38,6 +38,27 @@ const CurrentProjects = () => {
       });
   };
 
+  const handleDelete = (projectId: number) => {
+    fetch(`http://localhost:3001/api/projects/${projectId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete project");
+        }
+        return response.json();
+      })
+      .then(() => {
+        const updatedProjects = projects.filter(
+          (project) => project.id !== projectId
+        );
+        setProjects(updatedProjects);
+      })
+      .catch((error) => {
+        console.error("Error deleting project:", error);
+      });
+  };
+
   useEffect(() => {
     fetch(`http://localhost:3001/api/projects`)
       .then((response) => response.json())
@@ -59,7 +80,11 @@ const CurrentProjects = () => {
             templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
           >
             {projects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
+              <ProjectCard
+                key={index}
+                project={project}
+                handleDelete={handleDelete}
+              />
             ))}
           </SimpleGrid>
           <Button

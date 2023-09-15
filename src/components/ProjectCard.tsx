@@ -8,22 +8,25 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
+import "../CSS/CurrentProjects.css";
 
 export interface Project {
   title: string;
   description: string;
   address: string;
+  id: number;
 }
 
 interface ProjectCardProps {
   project: Project;
+  handleDelete: (projectId: number) => void;
 }
 
-function ProjectCard({ project }: ProjectCardProps) {
+function ProjectCard({ project, handleDelete }: ProjectCardProps) {
   return (
     <Card className="card">
-      <CardHeader className="CurrentProjectHeading">
-        <Heading>{project.title}</Heading>
+      <CardHeader className="projectHeading">
+        <Heading size={"md"}>{project.title}</Heading>
         <br />
         <Divider />
       </CardHeader>
@@ -34,6 +37,9 @@ function ProjectCard({ project }: ProjectCardProps) {
       </CardBody>
       <CardFooter>
         <Button>View here</Button>
+        <Button onClick={() => handleDelete(project.id)} colorScheme="red">
+          Delete
+        </Button>
       </CardFooter>
     </Card>
   );
