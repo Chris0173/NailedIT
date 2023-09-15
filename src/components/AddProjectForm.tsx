@@ -1,4 +1,7 @@
 import { useState } from "react";
+import "../CSS/AddProjectForm.css";
+import Logo from "../assets/logo.png";
+import { Flex, Heading, Stack, Button, Box, Image } from "@chakra-ui/react";
 
 interface AddProjectFormProps {
   onSubmit: (formData: FormData) => void;
@@ -33,36 +36,61 @@ const AddProjectForm: React.FC<AddProjectFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <div className="add-project-form">
-      <h3>Add New Project</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Project Title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="description"
-          placeholder="Job Description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="address"
-          placeholder="Job address"
-          value={formData.address}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit">Add Project</button>
-      </form>
-    </div>
+    <Flex align="center" justify="center" minH="100vh">
+      <Box className="addProjectForm" p={8}>
+        <Flex className="addProjectFormSection" direction="column">
+          <Box flex={1} pr={{ base: 0, md: 2 }}>
+            <Image src={Logo} height="110px" className="image" />
+            <Heading
+              className="addProjectFormHeader"
+              size="md"
+              textAlign="left"
+              mb={2}
+            >
+              Add Project
+            </Heading>
+            <Stack spacing={1}>
+              <form onSubmit={handleSubmit}>
+                <input
+                  className="input-field"
+                  type="text"
+                  name="title"
+                  placeholder="Project Title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="input-field"
+                  type="text"
+                  name="description"
+                  placeholder="Job Description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  className="input-field"
+                  type="text"
+                  name="address"
+                  placeholder="Job address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                />
+                <Button
+                  type="submit"
+                  colorScheme="red"
+                  className="addProjectSubmit"
+                >
+                  Add Project
+                </Button>
+              </form>
+            </Stack>
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   );
 };
 

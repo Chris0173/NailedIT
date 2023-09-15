@@ -1,0 +1,27 @@
+.addProjectForm {
+    max-width: 100%;
+    max-height: 100%;
+    border: width 2px; 
+    border-radius: 12px;
+    box-shadow: coral;
+    background-color:#c0786a ;
+    margin-top: 0px ;
+}
+
+.addProjectFormSection {
+    background-color: #474454;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.input-field {
+    border-radius: 4px;
+    background-color: #949298 ;
+    width: 12vw;
+    height: 2vw;
+    margin: 2%;
+}
+
+.addProjectSubmit {
+    margin-top: 10px;
+}

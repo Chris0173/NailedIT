@@ -14,27 +14,28 @@ const CurrentProjects = () => {
     setShowForm(!showForm);
   };
 
-  const handleSubmit = async (formData: FormData) => {
-    try {
-      const response = await fetch("http://localhost:3001/api/projects", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+  const handleSubmit = (formData: FormData) => {
+    fetch(`http://localhost:3001/api/projects`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to create project");
+        }
+        return response.json();
+      })
+      .then((newProject) => {
+        console.log("New project created:", newProject);
+        setProjects([...projects, newProject]);
+        setShowForm(false);
+      })
+      .catch((error) => {
+        console.error("Error creating project:", error);
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        setProjects(data);
-      } else {
-        console.error("Failed to add project.");
-      }
-    } catch (error) {
-      console.error("Error adding project:", error);
-    } finally {
-      setShowForm(false);
-    }
   };
 
   useEffect(() => {
