@@ -7,8 +7,10 @@ import {
   Divider,
   Heading,
   Text,
+  IconButton,
 } from "@chakra-ui/react";
 import "../CSS/CurrentProjects.css";
+import { DeleteIcon, EmailIcon } from "@chakra-ui/icons";
 
 export interface Project {
   title: string;
@@ -41,11 +43,15 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
         <br />
         <Text>{project.address}</Text>
       </CardBody>
-      <CardFooter>
+      <CardFooter justifyContent={"space-between"}>
         <Button>View here</Button>
-        <Button onClick={confirmDeletion} colorScheme="red">
+        <IconButton
+          aria-label="Delete"
+          icon={<DeleteIcon />}
+          onClick={confirmDeletion}
+        >
           Delete
-        </Button>
+        </IconButton>
       </CardFooter>
     </Card>
   );
