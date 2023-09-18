@@ -10,7 +10,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import "../CSS/CurrentProjects.css";
-import { DeleteIcon, EmailIcon } from "@chakra-ui/icons";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 export interface Project {
   title: string;
@@ -49,9 +49,7 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
           aria-label="Delete"
           icon={<DeleteIcon />}
           onClick={confirmDeletion}
-        >
-          Delete
-        </IconButton>
+        />
       </CardFooter>
     </Card>
   );

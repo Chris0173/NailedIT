@@ -75,30 +75,32 @@ const CurrentProjects = () => {
   return (
     <>
       <div className="CurrentProjectGridContainer">
-        <h1 className="currentProjectTitle">Current Projects:</h1>
-        <div className="CurrentProjectGrid">
-          <SimpleGrid
-            spacing={12}
-            templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
-          >
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                handleDelete={handleDelete}
-              />
-            ))}
-          </SimpleGrid>
-          <Button
-            className="addProjectButton"
-            rightIcon={<AddIcon />}
-            colorScheme="orange"
-            variant="solid"
-            onClick={handleOnclick}
-          >
-            Add Project
-          </Button>
-          {showForm && <AddProjectForm onSubmit={handleSubmit} />}
+        <div className="CurrentProjects">
+          <h1 className="currentProjectTitle">Current Projects:</h1>
+          <div className="CurrentProjectGrid">
+            <SimpleGrid
+              spacing={12}
+              templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+            >
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  project={project}
+                  handleDelete={handleDelete}
+                />
+              ))}
+            </SimpleGrid>
+            <Button
+              className="addProjectButton"
+              rightIcon={<AddIcon />}
+              colorScheme="orange"
+              variant="solid"
+              onClick={handleOnclick}
+            >
+              Add Project
+            </Button>
+            {showForm && <AddProjectForm onSubmit={handleSubmit} />}
+          </div>
         </div>
       </div>
     </>
