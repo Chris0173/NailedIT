@@ -1,0 +1,27 @@
+.formContainer {
+    background-color: #f6cf9a;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.addPriorityInput {
+    background-color: #76737c;
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+::placeholder {
+    color: white;
+    font-size: large;
+    font-weight: 400;
+    padding-left: 10px;
+}
+
+.addPriorityButton {
+    background-color: #c0786a;
+    padding: 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}

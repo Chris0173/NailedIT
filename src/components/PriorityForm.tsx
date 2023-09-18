@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { AddIcon } from "@chakra-ui/icons";
+import "../CSS/AddPriorityForm.css";
+import { Button } from "@chakra-ui/react";
 
 interface PriorityFormProps {
   onSubmit: (formData: priorityFormData) => void;
@@ -39,8 +42,9 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="formContainer">
       <input
+        className="addPriorityInput"
         type="text"
         name="priority_name"
         placeholder="Title"
@@ -49,6 +53,7 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
         required
       />
       <input
+        className="addPriorityInput"
         type="text"
         name="description"
         placeholder="Description"
@@ -57,6 +62,7 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
         required
       />
       <input
+        className="addPriorityInput"
         type="number"
         name="priority_level"
         placeholder="Level"
@@ -64,7 +70,13 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
         onChange={handleChange}
         required
       />
-      <button type="submit">Add Priority</button>
+      <Button
+        type="submit"
+        className="addPriorityButton"
+        rightIcon={<AddIcon />}
+      >
+        Add Priority
+      </Button>
     </form>
   );
 };

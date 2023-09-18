@@ -79,7 +79,6 @@ const TopPriorities = () => {
         return response.json();
       })
       .then(() => {
-        // Remove the deleted priority from the state
         setPriorities(priorities.filter((priority) => priority.id !== id));
         console.log("Priority deleted successfully");
       })
