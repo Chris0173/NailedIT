@@ -1,5 +1,5 @@
-import CurrentProjects from "../components/CurrentProjects";
-import TopPriorities from "../components/TopPriorities";
+import CurrentProjects from "../components/Projects/CurrentProjects";
+import TopPriorities from "../components/Priorities/TopPriorities";
 
 const HomeScreen = () => {
   return (

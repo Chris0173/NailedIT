@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "../CSS/AddProjectForm.css";
-import Logo from "../assets/logo.png";
+import "./AddProjectForm.css";
+import Logo from "../../assets/logo.png";
 import { Flex, Heading, Stack, Button, Box, Image } from "@chakra-ui/react";
 
 interface AddProjectFormProps {

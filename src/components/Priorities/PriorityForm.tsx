@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AddIcon } from "@chakra-ui/icons";
-import "../CSS/AddPriorityForm.css";
+import "./AddPriorityForm.css";
 import { Button } from "@chakra-ui/react";
 
 interface PriorityFormProps {

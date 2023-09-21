@@ -1,7 +1,7 @@
 import { Image, Text, HStack, Avatar } from "@chakra-ui/react";
-import logo from "../assets/logo.png";
-import "./LoginForm";
-import "../CSS/NavBar.css";
+import logo from "../../assets/logo.png";
+import "../login/LoginForm";
+import "./NavBar.css";
 
 const NavBar = () => {
   return (

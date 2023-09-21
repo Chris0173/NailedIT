@@ -1,5 +1,5 @@
-import CompletedProjects from "../components/CompletedProjects";
-import CurrentProjects from "../components/CurrentProjects";
+import CompletedProjects from "../components/Projects/CompletedProjects";
+import CurrentProjects from "../components/Projects/CurrentProjects";
 
 const ProjectsPage = () => {
   return (

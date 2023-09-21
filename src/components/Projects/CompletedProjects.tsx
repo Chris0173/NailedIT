@@ -9,7 +9,7 @@ import {
   Heading,
   Text,
 } from "@chakra-ui/react";
-import "../CSS/CompletedProjects.css";
+import "./CompletedProjects.css";
 import { AddIcon } from "@chakra-ui/icons";
 
 const CompletedProjects = () => {

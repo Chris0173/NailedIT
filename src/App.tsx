@@ -4,9 +4,8 @@ import HomeScreen from "./pages/HomeScreen";
 import ProjectsPage from "./pages/ProjectsPage";
 import DocumentsPage from "./pages/DocumentsPage";
 import InventoryPage from "./pages/InventoryPage";
-import CalendarPage from "./pages/CalendarPage";
-import NavBar from "./components/NavBar";
-import PageNavigation from "./components/PageNavigation";
+import NavBar from "./components/app/NavBar";
+import PageNavigation from "./components/app/PageNavigation";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
             <Route path="/projects" element={<ProjectsPage />} />
             <Route path="/documents" element={<DocumentsPage />} />
             <Route path="/inventory" element={<InventoryPage />} />
-            <Route path="/calendar" element={<CalendarPage />} />
           </Routes>
         </div>
       </Router>

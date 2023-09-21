@@ -2,7 +2,7 @@ import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Link as ReactRouterLink } from "react-router-dom";
 import { Link as ChakraLink } from "@chakra-ui/react";
-import "../CSS/NavBar.css";
+import "./NavBar.css";
 
 const DropNavigation = () => {
   return (

@@ -9,7 +9,7 @@ import {
   Text,
   IconButton,
 } from "@chakra-ui/react";
-import "../CSS/CurrentProjects.css";
+import "./CurrentProjects.css";
 import { DeleteIcon } from "@chakra-ui/icons";
 
 export interface Project {

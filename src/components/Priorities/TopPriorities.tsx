@@ -8,7 +8,7 @@ import {
   Stack,
   StackDivider,
 } from "@chakra-ui/react";
-import "../CSS/TopPriorities.css";
+import "./TopPriorities.css";
 import { AddIcon } from "@chakra-ui/icons";
 import PriorityForm, { priorityFormData } from "./PriorityForm";
 import PriorityCard from "./PriorityCard";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SimpleGrid, Button } from "@chakra-ui/react";
-import "../CSS/CurrentProjects.css";
+import "./CurrentProjects.css";
 import { AddIcon } from "@chakra-ui/icons";
 import ProjectCard from "./ProjectCard";
 import AddProjectForm, { FormData } from "./AddProjectForm";
