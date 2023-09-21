@@ -12,6 +12,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  HStack,
 } from "@chakra-ui/react";
 import { priorityFormData } from "./PriorityForm";
 import { DeleteIcon } from "@chakra-ui/icons";
@@ -40,21 +41,39 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     setIsConfirmationModalOpen(false);
   };
 
+  const getPriorityLevelColor = (priorityLevel: number) => {
+    if (priorityLevel === 1) {
+      return "red";
+    } else if (priorityLevel === 2) {
+      return "yellow";
+    } else if (priorityLevel === 3) {
+      return "green";
+    }
+    return "gray";
+  };
+
+  const priorityLevelColor = getPriorityLevelColor(priorityData.priority_level);
+
+  const formattedCreatedAt = new Date(priorityData.created_at).toLocaleString();
+
   return (
     <Box borderWidth="1px" borderRadius="lg" p="4" m="2">
       <Heading size="md">{priorityData.priority_name}</Heading>
       <Text mt="2">{priorityData.description}</Text>
-      <Badge colorScheme="blue" mt="2">
-        Level: {priorityData.priority_level}
-      </Badge>
       <Text fontSize="sm" mt="2">
-        Created At: {priorityData.created_at}
+        Created At: {formattedCreatedAt}
       </Text>
-      <IconButton
-        aria-label="Delete"
-        icon={<DeleteIcon />}
-        onClick={handleDelete}
-      />
+      <HStack justifyContent="space-between">
+        <Badge colorScheme={priorityLevelColor} mt="2">
+          Level: {priorityData.priority_level}
+        </Badge>
+
+        <IconButton
+          aria-label="Delete"
+          icon={<DeleteIcon />}
+          onClick={handleDelete}
+        />
+      </HStack>
 
       <Modal
         isOpen={isConfirmationModalOpen}

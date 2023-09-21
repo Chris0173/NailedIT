@@ -10,6 +10,8 @@
     height: 35px;
     border-radius: 10px;
     margin-bottom: 10px;
+    outline: none;
+    text-indent: 10px;
 }
 
 ::placeholder {
@@ -20,7 +22,6 @@
 }
 
 .addPriorityButton {
-    background-color: #c0786a;
     padding: 10px;
     border-radius: 12px;
     font-weight: 500;

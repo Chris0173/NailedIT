@@ -70,10 +70,12 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
         onChange={handleChange}
         required
       />
+
       <Button
         type="submit"
         className="addPriorityButton"
         rightIcon={<AddIcon />}
+        colorScheme="teal"
       >
         Add Priority
       </Button>
