@@ -1,7 +1,8 @@
-import { GoogleLogin } from "@react-oauth/google";
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import CalendarAddEvent from "../components/CalendarAddEvent";
 
 const Calendar = () => {
-  const responseMessage = (response: any) => {
+  const responseMessage = (response: CredentialResponse) => {
     console.log(response);
   };
   const errorMessage = () => {
@@ -11,7 +12,14 @@ const Calendar = () => {
   return (
     <div className="calendarPage">
       <h1 className="calendarTitle">Calendar:</h1>
-      <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />
+      <GoogleLogin
+        onSuccess={responseMessage}
+        onError={errorMessage}
+        type="standard"
+      />
+      <div className="addEvent">
+        <CalendarAddEvent />
+      </div>
     </div>
   );
 };
