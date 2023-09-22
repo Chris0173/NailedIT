@@ -3,18 +3,19 @@ import { SimpleGrid, Button } from "@chakra-ui/react";
 import "./CurrentProjects.css";
 import { AddIcon } from "@chakra-ui/icons";
 import ProjectCard from "./ProjectCard";
-import AddProjectForm, { FormData } from "./AddProjectForm";
+import AddProjectModal from "./AddProjectModal";
 import { Project } from "./ProjectCard";
+import { ProjectFormData } from "./AddProjectModal";
 
 const CurrentProjects = () => {
-  const [showForm, setShowForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [projects, setProjects] = useState<Project[]>([]);
 
   const handleOnclick = () => {
-    setShowForm(!showForm);
+    setShowModal(!showModal);
   };
 
-  const handleSubmit = (formData: FormData) => {
+  const handleSubmit = (formData: ProjectFormData) => {
     fetch(`http://localhost:3001/api/projects`, {
       method: "POST",
       headers: {
@@ -31,7 +32,7 @@ const CurrentProjects = () => {
       .then((newProject) => {
         console.log("New project created:", newProject);
         setProjects([...projects, newProject]);
-        setShowForm(false);
+        setShowModal(false);
       })
       .catch((error) => {
         console.error("Error creating project:", error);
@@ -99,7 +100,11 @@ const CurrentProjects = () => {
             >
               Add Project
             </Button>
-            {showForm && <AddProjectForm onSubmit={handleSubmit} />}
+            <AddProjectModal
+              isOpen={showModal}
+              onClose={handleOnclick}
+              onSubmit={(formData) => handleSubmit(formData)}
+            />
           </div>
         </div>
       </div>
