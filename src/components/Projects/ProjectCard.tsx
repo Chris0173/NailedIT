@@ -39,9 +39,7 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const confirmDeletion = () => {
-    if (window.confirm("Are you sure you want to delete this project?")) {
-      handleDelete(project.id);
-    }
+    handleDelete(project.id);
   };
 
   const handleViewHere = () => {
