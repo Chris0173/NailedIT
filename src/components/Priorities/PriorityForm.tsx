@@ -11,7 +11,7 @@ export interface priorityFormData {
   id: number;
   priority_name: string;
   description: string;
-  priority_level: number;
+  priority_level: number | string;
   created_at: string;
 }
 
@@ -20,7 +20,7 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
     id: 0,
     priority_name: "",
     description: "",
-    priority_level: 0,
+    priority_level: "",
     created_at: "",
   });
 
@@ -36,7 +36,7 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
       id: 0,
       priority_name: "",
       description: "",
-      priority_level: 0,
+      priority_level: "",
       created_at: "",
     });
   };
@@ -65,7 +65,7 @@ const PriorityForm: React.FC<PriorityFormProps> = ({ onSubmit }) => {
         className="addPriorityInput"
         type="number"
         name="priority_level"
-        placeholder="Level"
+        placeholder="1- high priority 2- medium priority 3- low priority"
         value={formData.priority_level}
         onChange={handleChange}
         required

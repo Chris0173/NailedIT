@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import "./ProjectModal.css";
+import "./Projects.css";
 
 export interface ProjectFormData {
   title: string;
@@ -116,7 +116,9 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
           />
         </ModalBody>
         <ModalFooter className="modalFooter">
-          <Button onClick={handleFormSubmit}>Save</Button>
+          <Button onClick={handleFormSubmit} colorScheme="orange">
+            Save
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

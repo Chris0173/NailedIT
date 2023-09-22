@@ -16,7 +16,7 @@ import {
   ModalBody,
   ModalFooter,
 } from "@chakra-ui/react";
-import "./CurrentProjects.css";
+import "./Projects.css";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
@@ -79,7 +79,7 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
           <ModalHeader>{`${project.address} Project Card`}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text className="detailsHeader">Project Details</Text>
+            <Text className="projectTextHeaders">Project Details</Text>
             <Text>Project Description:</Text>
             <p className="detailsText">{project.description}</p>
             <br />
@@ -88,12 +88,14 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
             <br />
             <Divider />
             <br />
-            <Text className="detailsHeader">Client Details</Text>
+            <Text className="projectTextHeaders">Client Details</Text>
             <Text>Client Name: {project.client_name}</Text>
             <Text>Client Contact: {`${project.client_contact_number}`}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={handleCloseModal}>Close</Button>
+            <Button onClick={handleCloseModal} colorScheme="orange">
+              Close
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
