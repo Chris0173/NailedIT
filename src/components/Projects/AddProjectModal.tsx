@@ -8,15 +8,17 @@ import {
   ModalFooter,
   Button,
   Input,
+  Text,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import "./ProjectModal.css";
 
 export interface ProjectFormData {
   title: string;
   description: string;
   address: string;
   client_name: string;
-  client_contact_number: number;
+  client_contact_number: number | string;
   additional_info: string;
 }
 
@@ -31,14 +33,18 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
   onClose,
   onSubmit,
 }) => {
-  const [projectFormData, setProjectFormData] = useState<ProjectFormData>({
+  const initalProjectFormData: ProjectFormData = {
     title: "",
     description: "",
     address: "",
     client_name: "",
-    client_contact_number: 0,
+    client_contact_number: "",
     additional_info: "",
-  });
+  };
+
+  const [projectFormData, setProjectFormData] = useState<ProjectFormData>(
+    initalProjectFormData
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -47,16 +53,19 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
 
   const handleFormSubmit = () => {
     onSubmit(projectFormData);
+    setProjectFormData(initalProjectFormData);
   };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Add Project:</ModalHeader>
+      <ModalContent className="modalContent">
+        <ModalHeader className="modalHeader">Add Project</ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody className="modalBody">
+          <Text className="projectTextHeaders">Project Information</Text>
           <Input
+            className="projectModalInput"
             type="text"
             name="title"
             placeholder="Project Name"
@@ -64,6 +73,7 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
             onChange={handleInputChange}
           />
           <Input
+            className="projectModalInput"
             type="text"
             name="description"
             placeholder="Project Description"
@@ -71,13 +81,16 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
             onChange={handleInputChange}
           />
           <Input
+            className="projectModalInput"
             type="text"
             name="address"
             placeholder="Project Address"
             value={projectFormData.address}
             onChange={handleInputChange}
           />
+          <Text className="projectTextHeaders">Client Information</Text>
           <Input
+            className="projectModalInput"
             type="text"
             name="client_name"
             placeholder="Client Name"
@@ -85,13 +98,16 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
             onChange={handleInputChange}
           />
           <Input
+            className="projectModalInput"
             type="number"
             name="client_contact_number"
             placeholder="Client Contact Number"
             value={projectFormData.client_contact_number}
             onChange={handleInputChange}
           />
+          <Text className="projectTextHeaders">Other</Text>
           <Input
+            className="projectModalInput"
             type="text"
             name="additional_info"
             placeholder="Additional Info"
@@ -99,7 +115,7 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
             onChange={handleInputChange}
           />
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter className="modalFooter">
           <Button onClick={handleFormSubmit}>Save</Button>
         </ModalFooter>
       </ModalContent>

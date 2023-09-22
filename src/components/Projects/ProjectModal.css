@@ -1,0 +1,26 @@
+.modalContent {
+    background-color: #474454;
+}
+
+.modalHeader {
+    text-transform: uppercase;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.projectModalInput {
+    margin-bottom: 7px;
+}
+
+.projectTextHeaders {
+    font-size: medium;
+    text-decoration: underline;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 10px 0px 5px 0px;
+    color: #d0bc8f;
+    font-weight: 600;
+}
+
+::placeholder {
+    color: lightGrey;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
