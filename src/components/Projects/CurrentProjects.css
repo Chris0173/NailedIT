@@ -31,3 +31,15 @@
 .addProjectButton {
     margin-top: 25px;
 }
+
+.detailsHeader {
+    font-size: large;
+    font-weight: 400;
+    text-decoration: underline;
+    color: wheat;
+}
+
+.detailsText {
+    font-size: medium;
+    color: white;
+}
