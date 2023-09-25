@@ -20,6 +20,7 @@ import {
 import "./Projects.css";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import DeletionConfirmationModal from "../app/DeletionConfirmationModal";
 
 export interface Project {
   id: number;
@@ -39,9 +40,19 @@ interface ProjectCardProps {
 
 function ProjectCard({ project, handleDelete }: ProjectCardProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeletionModalOpen, setIsDeletionModalOpen] = useState(false);
 
   const confirmDeletion = () => {
+    setIsDeletionModalOpen(true);
+  };
+
+  const handleDeleteConfirmed = () => {
     handleDelete(project.id);
+    setIsDeletionModalOpen(false);
+  };
+
+  const handleCloseDeletionModal = () => {
+    setIsDeletionModalOpen(false);
   };
 
   const handleViewHere = () => {
@@ -88,6 +99,11 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
           aria-label="Delete"
           icon={<DeleteIcon />}
           onClick={confirmDeletion}
+        />
+        <DeletionConfirmationModal
+          isOpen={isDeletionModalOpen}
+          onClose={handleCloseDeletionModal}
+          onConfirm={handleDeleteConfirmed}
         />
       </CardFooter>
 

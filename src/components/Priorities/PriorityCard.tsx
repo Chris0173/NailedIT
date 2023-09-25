@@ -5,17 +5,11 @@ import {
   Text,
   Badge,
   IconButton,
-  Button,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   HStack,
 } from "@chakra-ui/react";
 import { priorityFormData } from "./PriorityForm";
 import { DeleteIcon } from "@chakra-ui/icons";
+import DeletionConfirmationModal from "../app/DeletionConfirmationModal";
 
 interface PriorityCardProps {
   priorityData: priorityFormData;
@@ -41,15 +35,21 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
     setIsConfirmationModalOpen(false);
   };
 
-  const getPriorityLevelColor = (priorityLevel: number) => {
-    if (priorityLevel === 1) {
-      return "red";
-    } else if (priorityLevel === 2) {
-      return "yellow";
-    } else if (priorityLevel === 3) {
-      return "green";
+  const getPriorityLevelColor = (priorityLevel: number | string): string => {
+    const level =
+      typeof priorityLevel === "string"
+        ? parseInt(priorityLevel, 10)
+        : priorityLevel;
+    switch (level) {
+      case 1:
+        return "red";
+      case 2:
+        return "yellow";
+      case 3:
+        return "green";
+      default:
+        return "gray";
     }
-    return "gray";
   };
 
   const priorityLevelColor = getPriorityLevelColor(priorityData.priority_level);
@@ -74,25 +74,11 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
           onClick={handleDelete}
         />
       </HStack>
-
-      <Modal
+      <DeletionConfirmationModal
         isOpen={isConfirmationModalOpen}
         onClose={handleCloseConfirmationModal}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Confirm Deletion</ModalHeader>
-          <ModalBody>Are you sure you want to delete this priority?</ModalBody>
-          <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={handleConfirmDelete}>
-              Yes, Delete
-            </Button>
-            <Button variant="ghost" onClick={handleCloseConfirmationModal}>
-              Cancel
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+        onConfirm={handleConfirmDelete}
+      />
     </Box>
   );
 };
