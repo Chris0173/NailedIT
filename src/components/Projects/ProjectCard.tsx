@@ -52,6 +52,24 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
     setIsModalOpen(false);
   };
 
+  const handleMarkCompleted = () => {
+    fetch(`http://localhost:3001/api/projects/${project.id}/markCompleted`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ is_completed: true }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to mark project as completed");
+        }
+      })
+      .catch((error) => {
+        console.error("Error marking project as completed:", error);
+      });
+  };
+
   return (
     <Card className="card">
       <CardHeader className="projectHeading">
@@ -96,7 +114,11 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
             <Text>Client Contact: {`${project.client_contact_number}`}</Text>
           </ModalBody>
           <ModalFooter justifyContent="space-between">
-            <Checkbox size="lg" isChecked={project.is_completed}>
+            <Checkbox
+              size="lg"
+              isChecked={project.is_completed}
+              onChange={handleMarkCompleted}
+            >
               Mark as Completed
             </Checkbox>
             <Button onClick={handleCloseModal} colorScheme="orange">
