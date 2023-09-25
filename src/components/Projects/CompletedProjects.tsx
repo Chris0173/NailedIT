@@ -1,18 +1,43 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Divider,
-  SimpleGrid,
-  Button,
-  Heading,
-  Text,
-} from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import "./CompletedProjects.css";
-import { AddIcon } from "@chakra-ui/icons";
+import ProjectCard, { Project } from "./ProjectCard";
+import { useEffect, useState } from "react";
 
 const CompletedProjects = () => {
+  const [completedProjects, setCompletedProjects] = useState<Project[]>([]);
+
+  const handleDelete = (projectId: number) => {
+    fetch(`http://localhost:3001/api/projects/${projectId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete project");
+        }
+        return response.json();
+      })
+      .then(() => {
+        const updatedProjects = completedProjects.filter(
+          (project) => project.id !== projectId
+        );
+        setCompletedProjects(updatedProjects);
+      })
+      .catch((error) => {
+        console.error("Error deleting project:", error);
+      });
+  };
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/api/projects/completed`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCompletedProjects(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching completed projects:", error);
+      });
+  }, []);
+
   return (
     <>
       <div className="CompletedProjectGridContainer">
@@ -23,66 +48,14 @@ const CompletedProjects = () => {
               spacing={12}
               templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
             >
-              <Card className="CompletedCard">
-                <CardHeader className="CompletedProjectHeading">
-                  <Heading size="md"> 15 Example Road</Heading>
-                  <br />
-                  <Divider />
-                </CardHeader>
-                <CardBody>
-                  <Text>
-                    65m fencing job <br /> Lead: Michael Scott
-                  </Text>
-                  <br />
-                  <Text>15 Example Road Pretend City, 05158</Text>
-                </CardBody>
-                <CardFooter>
-                  <Button>View here</Button>
-                </CardFooter>
-              </Card>
-              <Card className="CompletedCard">
-                <CardHeader className="CompletedProjectHeading">
-                  <Heading size="md"> 57A Sample Street</Heading>
-                  <br />
-                  <Divider />
-                </CardHeader>
-                <CardBody>
-                  <Text>80m Retaining wall w/ general maintainence</Text>
-                  <br />
-                  <Text>57A Sample Street Springfield, 15435</Text>
-                </CardBody>
-                <CardFooter>
-                  <Button>View here</Button>
-                </CardFooter>
-              </Card>
-              <Card className="CompletedCard">
-                <CardHeader className="CompletedProjectHeading">
-                  <Heading size="md"> 36 Winter cresent</Heading>
-                  <br />
-                  <Divider />
-                </CardHeader>
-                <CardBody>
-                  <Text>
-                    Estate Rebuild <br /> Lead: John Smith
-                  </Text>
-                  <br />
-                  <Text>
-                    36 Winter cresent <br /> Castle Rock, 54218
-                  </Text>
-                </CardBody>
-                <CardFooter>
-                  <Button>View here</Button>
-                </CardFooter>
-              </Card>
+              {completedProjects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  project={project}
+                  handleDelete={handleDelete}
+                />
+              ))}
             </SimpleGrid>
-            <Button
-              className="viewAllCompletedButton"
-              rightIcon={<AddIcon />}
-              colorScheme="orange"
-              variant="solid"
-            >
-              View All
-            </Button>
           </div>
         </div>
       </div>

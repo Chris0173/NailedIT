@@ -27,7 +27,8 @@ export interface Project {
   address: string;
   client_name: string;
   client_contact_number: Number;
-  addition_info: string;
+  additional_info: string;
+  is_completed: boolean;
 }
 
 interface ProjectCardProps {
@@ -83,6 +84,9 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
             <br />
             <Text>Project Address:</Text>
             <p className="detailsText">{project.address}</p>
+            <br />
+            <Text>Additional Information:</Text>
+            <p className="detailsText">{project.additional_info}</p>
             <br />
             <Divider />
             <br />

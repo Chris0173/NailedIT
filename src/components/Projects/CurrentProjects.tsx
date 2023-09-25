@@ -9,7 +9,7 @@ import { ProjectFormData } from "./AddProjectModal";
 
 const CurrentProjects = () => {
   const [showModal, setShowModal] = useState(false);
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [currentProjects, setCurrentProjects] = useState<Project[]>([]);
 
   const handleOnclick = () => {
     setShowModal(!showModal);
@@ -31,7 +31,7 @@ const CurrentProjects = () => {
       })
       .then((newProject) => {
         console.log("New project created:", newProject);
-        setProjects([...projects, newProject]);
+        setCurrentProjects([...currentProjects, newProject]);
         setShowModal(false);
       })
       .catch((error) => {
@@ -50,10 +50,10 @@ const CurrentProjects = () => {
         return response.json();
       })
       .then(() => {
-        const updatedProjects = projects.filter(
+        const updatedProjects = currentProjects.filter(
           (project) => project.id !== projectId
         );
-        setProjects(updatedProjects);
+        setCurrentProjects(updatedProjects);
       })
       .catch((error) => {
         console.error("Error deleting project:", error);
@@ -61,13 +61,13 @@ const CurrentProjects = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/projects`)
+    fetch(`http://localhost:3001/api/projects/current`)
       .then((response) => response.json())
       .then((data) => {
-        setProjects(data);
+        setCurrentProjects(data);
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("Error fetching current projects:", error);
       });
   }, []);
 
@@ -81,7 +81,7 @@ const CurrentProjects = () => {
               spacing={12}
               templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
             >
-              {projects.map((project, index) => (
+              {currentProjects.map((project, index) => (
                 <ProjectCard
                   key={index}
                   project={project}
