@@ -15,6 +15,7 @@ import {
   ModalCloseButton,
   ModalBody,
   ModalFooter,
+  Checkbox,
 } from "@chakra-ui/react";
 import "./Projects.css";
 import { DeleteIcon } from "@chakra-ui/icons";
@@ -94,7 +95,10 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
             <Text>Client Name: {project.client_name}</Text>
             <Text>Client Contact: {`${project.client_contact_number}`}</Text>
           </ModalBody>
-          <ModalFooter>
+          <ModalFooter justifyContent="space-between">
+            <Checkbox size="lg" isChecked={project.is_completed}>
+              Mark as Completed
+            </Checkbox>
             <Button onClick={handleCloseModal} colorScheme="orange">
               Close
             </Button>
