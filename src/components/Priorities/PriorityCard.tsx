@@ -66,7 +66,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
       </HStack>
       <Text mt="2">{priorityData.description}</Text>
       <Text mt="2">{priorityData.required_by}</Text>
-
+      <br />
       <HStack justifyContent="space-between">
         <Text fontSize="sm" mt="2">
           Created At: {formattedCreatedAt}
