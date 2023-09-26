@@ -23,6 +23,7 @@ import { useState } from "react";
 import DeletionConfirmationModal from "../app/DeletionConfirmationModal";
 
 export interface Project {
+  // Project properties
   id: number;
   title: string;
   description: string;
@@ -34,35 +35,43 @@ export interface Project {
 }
 
 interface ProjectCardProps {
+  // Props for ProjectCard component
   project: Project;
   handleDelete: (projectId: number) => void;
 }
 
 function ProjectCard({ project, handleDelete }: ProjectCardProps) {
+  // State for managing modals
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeletionModalOpen, setIsDeletionModalOpen] = useState(false);
 
+  // Function to confirm project deletion
   const confirmDeletion = () => {
     setIsDeletionModalOpen(true);
   };
 
+  // Function to handle confirmed project deletion
   const handleDeleteConfirmed = () => {
     handleDelete(project.id);
     setIsDeletionModalOpen(false);
   };
 
+  // Function to close deletion confirmation modal
   const handleCloseDeletionModal = () => {
     setIsDeletionModalOpen(false);
   };
 
+  // Function to view project details in a modal
   const handleViewHere = () => {
     setIsModalOpen(true);
   };
 
+  // Function to close project details modal
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
+  // Function to mark project as completed
   const handleMarkCompleted = () => {
     fetch(`http://localhost:3001/api/projects/${project.id}/markCompleted`, {
       method: "PUT",
@@ -83,16 +92,21 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
 
   return (
     <Card className="card">
+      {/* Project Card Header */}
       <CardHeader className="projectHeading">
         <Heading size={"md"}>{project.title}</Heading>
         <br />
         <Divider />
       </CardHeader>
+
+      {/* Project Card Body */}
       <CardBody>
         <Text>{project.description}</Text>
         <br />
         <Text>{project.address}</Text>
       </CardBody>
+
+      {/* Project Card Footer */}
       <CardFooter justifyContent={"space-between"}>
         <Button onClick={handleViewHere}>View here</Button>
         <IconButton
@@ -100,6 +114,8 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
           icon={<DeleteIcon />}
           onClick={confirmDeletion}
         />
+
+        {/* Deletion Confirmation Modal */}
         <DeletionConfirmationModal
           isOpen={isDeletionModalOpen}
           onClose={handleCloseDeletionModal}
@@ -107,12 +123,14 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
         />
       </CardFooter>
 
+      {/* Project Details Modal */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} size="xl">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>{`${project.address} Project Card`}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            {/* Project Details */}
             <Text className="projectTextHeaders">Project Details</Text>
             <Text>Project Description:</Text>
             <p className="detailsText">{project.description}</p>
@@ -125,10 +143,14 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
             <br />
             <Divider />
             <br />
+
+            {/* Client Details */}
             <Text className="projectTextHeaders">Client Details</Text>
             <Text>Client Name: {project.client_name}</Text>
             <Text>Client Contact: {`${project.client_contact_number}`}</Text>
           </ModalBody>
+
+          {/* Project Details Modal Footer */}
           <ModalFooter justifyContent="space-between">
             <Checkbox
               size="lg"

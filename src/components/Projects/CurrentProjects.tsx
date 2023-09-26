@@ -8,14 +8,17 @@ import { Project } from "./ProjectCard";
 import { ProjectFormData } from "./AddProjectModal";
 
 const CurrentProjects = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [currentProjects, setCurrentProjects] = useState<Project[]>([]);
+  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const [currentProjects, setCurrentProjects] = useState<Project[]>([]); // State to hold the current projects
 
+  // Toggle modal visibility
   const handleOnclick = () => {
     setShowModal(!showModal);
   };
 
+  // Handle project submission
   const handleSubmit = (formData: ProjectFormData) => {
+    // Make a POST request to create a new project
     fetch(`http://localhost:3001/api/projects`, {
       method: "POST",
       headers: {
@@ -39,6 +42,7 @@ const CurrentProjects = () => {
       });
   };
 
+  // Handle project deletion
   const handleDelete = (projectId: number) => {
     fetch(`http://localhost:3001/api/projects/${projectId}`, {
       method: "DELETE",
@@ -60,6 +64,7 @@ const CurrentProjects = () => {
       });
   };
 
+  // Fetch current projects when the component mounts
   useEffect(() => {
     fetch(`http://localhost:3001/api/projects/current`)
       .then((response) => response.json())

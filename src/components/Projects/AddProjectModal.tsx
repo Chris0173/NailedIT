@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import "./Projects.css";
 
+// Define the shape of the project form data
 export interface ProjectFormData {
   title: string;
   description: string;
@@ -22,6 +23,7 @@ export interface ProjectFormData {
   additional_info: string;
 }
 
+// Define the props for the AddProjectModal component
 interface AddProjectModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -33,6 +35,7 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
   onClose,
   onSubmit,
 }) => {
+  // Initial form data for a new project
   const initalProjectFormData: ProjectFormData = {
     title: "",
     description: "",
@@ -42,15 +45,18 @@ const AddProjectModal: React.FC<AddProjectModalProps> = ({
     additional_info: "",
   };
 
+  // State to manage the project form data
   const [projectFormData, setProjectFormData] = useState<ProjectFormData>(
     initalProjectFormData
   );
 
+  // Handle input changes in the form
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProjectFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
+  // Handle form submission
   const handleFormSubmit = () => {
     onSubmit(projectFormData);
     setProjectFormData(initalProjectFormData);

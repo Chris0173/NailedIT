@@ -22,19 +22,23 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
 }) => {
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 
+  // Handle delete button click
   const handleDelete = () => {
     setIsConfirmationModalOpen(true);
   };
 
+  // Handle confirmation to delete
   const handleConfirmDelete = () => {
     onDelete(priorityData.id);
     setIsConfirmationModalOpen(false);
   };
 
+  // Handle closing confirmation modal
   const handleCloseConfirmationModal = () => {
     setIsConfirmationModalOpen(false);
   };
 
+  // Determine priority level color based on level
   const getPriorityLevelColor = (priorityLevel: number | string): string => {
     const level =
       typeof priorityLevel === "string"
@@ -54,6 +58,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
 
   const priorityLevelColor = getPriorityLevelColor(priorityData.priority_level);
 
+  // created_at format to a more readable date and time
   const formattedCreatedAt = new Date(priorityData.created_at).toLocaleString();
 
   return (

@@ -41,11 +41,13 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
     required_by: "",
   });
 
+  // Handle form input changes
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { name, value } = e.currentTarget;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
@@ -68,6 +70,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
         <ModalCloseButton />
         <ModalBody className="modalBody">
           <form onSubmit={handleSubmit}>
+            {/* Input for priority name */}
             <Input
               className="priorityModalInput"
               type="text"
@@ -77,6 +80,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
               onChange={handleChange}
               required
             />
+            {/* Input for priority description */}
             <Input
               className="priorityModalInput"
               type="text"
@@ -86,6 +90,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
               onChange={handleChange}
               required
             />
+            {/* Input for priority level */}
             <Input
               className="priorityModalInput"
               type="number"
@@ -95,6 +100,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
               onChange={handleChange}
               required
             />
+            {/* Input for required by */}
             <Input
               className="priorityModalInput"
               type="text"
@@ -103,6 +109,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
               value={formData.required_by}
               onChange={handleChange}
             />
+            {/* Submit button */}
             <Button
               className="addPriorityButton"
               type="submit"

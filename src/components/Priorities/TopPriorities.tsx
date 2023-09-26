@@ -14,9 +14,11 @@ import PriorityFormModal, { priorityFormData } from "./PriorityFormModal";
 import PriorityCard from "./PriorityCard";
 
 const TopPriorities = () => {
+  // State to manage priorities and modal visibilit
   const [priorities, setPriorities] = useState<priorityFormData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Fetch priorities when the component mounts
   useEffect(() => {
     fetch("http://localhost:3001/api/priorities")
       .then((response) => {
@@ -33,10 +35,12 @@ const TopPriorities = () => {
       });
   }, []);
 
+  // Handle adding a priority
   const handleAddPriority = () => {
     setIsModalOpen(true);
   };
 
+  // Handle submitting a priority
   const handleSubmit = (priorityData: priorityFormData) => {
     const formattedData = {
       ...priorityData,
@@ -68,6 +72,7 @@ const TopPriorities = () => {
       });
   };
 
+  // Handle deleting a priority
   const handleDeletePriority = (id: number) => {
     fetch(`http://localhost:3001/api/priorities/${id}`, {
       method: "DELETE",
@@ -95,6 +100,7 @@ const TopPriorities = () => {
         </CardHeader>
         <CardBody>
           <Stack divider={<StackDivider />} spacing="4">
+            {/* Add Priority button */}
             <Button
               className="addTopPriorityButton"
               rightIcon={<AddIcon />}
@@ -104,11 +110,15 @@ const TopPriorities = () => {
             >
               Add Priority
             </Button>
+
+            {/* PriorityFormModal */}
             <PriorityFormModal
               isOpen={isModalOpen}
               onClose={() => setIsModalOpen(false)}
               onSubmit={handleSubmit}
             />
+
+            {/* Displaying each priority */}
             {priorities.map((priority, index) => (
               <PriorityCard
                 key={index}

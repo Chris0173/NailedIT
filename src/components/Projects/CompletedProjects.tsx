@@ -4,8 +4,10 @@ import ProjectCard, { Project } from "./ProjectCard";
 import { useEffect, useState } from "react";
 
 const CompletedProjects = () => {
+  // State to hold the completed projects
   const [completedProjects, setCompletedProjects] = useState<Project[]>([]);
 
+  // Function to handle project deletion
   const handleDelete = (projectId: number) => {
     fetch(`http://localhost:3001/api/projects/${projectId}`, {
       method: "DELETE",
@@ -27,6 +29,7 @@ const CompletedProjects = () => {
       });
   };
 
+  // Fetch completed projects when the component mounts
   useEffect(() => {
     fetch(`http://localhost:3001/api/projects/completed`)
       .then((response) => response.json())

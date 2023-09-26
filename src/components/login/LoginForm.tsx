@@ -26,11 +26,13 @@ const LoginForm = () => {
               Login
             </Heading>
             <Stack spacing={3}>
+              {/* Input for Email */}
               <input
                 className="input-field"
                 type="email"
                 placeholder="Email:"
               />
+              {/* Input for Password */}
               <input
                 className="input-field"
                 type="password"
@@ -40,6 +42,7 @@ const LoginForm = () => {
             <Text>
               <a href="#">Forgot Password?</a>
             </Text>
+            {/* Login Button */}
             <Button className="login-button" mt={4} colorScheme="blue">
               Login
             </Button>
@@ -97,6 +100,7 @@ const LoginForm = () => {
                 </Stack>
               </Box>
             </Flex>
+            {/* Register Button */}
             <Button className="register-button" mt={4} colorScheme="green">
               Register
             </Button>
