@@ -10,12 +10,12 @@ import {
 } from "@chakra-ui/react";
 import "./TopPriorities.css";
 import { AddIcon } from "@chakra-ui/icons";
-import PriorityForm, { priorityFormData } from "./PriorityForm";
+import PriorityFormModal, { priorityFormData } from "./PriorityFormModal";
 import PriorityCard from "./PriorityCard";
 
 const TopPriorities = () => {
-  const [isFormVisible, setIsFormVisible] = useState(false);
   const [priorities, setPriorities] = useState<priorityFormData[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:3001/api/priorities")
@@ -34,7 +34,7 @@ const TopPriorities = () => {
   }, []);
 
   const handleAddPriority = () => {
-    setIsFormVisible(true);
+    setIsModalOpen(true);
   };
 
   const handleSubmit = (priorityData: priorityFormData) => {
@@ -64,7 +64,7 @@ const TopPriorities = () => {
         console.log("Error submitting priority:", error);
       })
       .finally(() => {
-        setIsFormVisible(false);
+        setIsModalOpen(false);
       });
   };
 
@@ -104,7 +104,11 @@ const TopPriorities = () => {
             >
               Add Priority
             </Button>
-            {isFormVisible && <PriorityForm onSubmit={handleSubmit} />}
+            <PriorityFormModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              onSubmit={handleSubmit}
+            />
             {priorities.map((priority, index) => (
               <PriorityCard
                 key={index}

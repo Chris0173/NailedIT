@@ -7,7 +7,7 @@ import {
   IconButton,
   HStack,
 } from "@chakra-ui/react";
-import { priorityFormData } from "./PriorityForm";
+import { priorityFormData } from "./PriorityFormModal";
 import { DeleteIcon } from "@chakra-ui/icons";
 import DeletionConfirmationModal from "../app/DeletionConfirmationModal";
 
@@ -58,16 +58,19 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
 
   return (
     <Box borderWidth="1px" borderRadius="lg" p="4" m="2">
-      <Heading size="md">{priorityData.priority_name}</Heading>
-      <Text mt="2">{priorityData.description}</Text>
-      <Text fontSize="sm" mt="2">
-        Created At: {formattedCreatedAt}
-      </Text>
       <HStack justifyContent="space-between">
+        <Heading size="md">{priorityData.priority_name}</Heading>
         <Badge colorScheme={priorityLevelColor} mt="2">
           Level: {priorityData.priority_level}
         </Badge>
+      </HStack>
+      <Text mt="2">{priorityData.description}</Text>
+      <Text mt="2">{priorityData.required_by}</Text>
 
+      <HStack justifyContent="space-between">
+        <Text fontSize="sm" mt="2">
+          Created At: {formattedCreatedAt}
+        </Text>
         <IconButton
           aria-label="Delete"
           icon={<DeleteIcon />}
