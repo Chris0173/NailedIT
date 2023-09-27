@@ -1,0 +1,55 @@
+
+/* Modal */
+.loginRegisterModalHeader {
+    background-color: #c0786a ;
+}
+
+.loginRegisterModalBody{
+    background-color: #474454;
+}
+
+::placeholder {
+    font-size: medium;
+    font-style: italic;
+}
+
+/* Login */
+.loginModalTitle {
+    margin-top: 10px;
+    font-size: large;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.loginModalInput{
+    margin: 10px;
+    padding: 10px;
+    background-color: #76737c;
+}
+
+.loginModalButton {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+/* Register */
+.registerModalTitle {
+    margin-top: 10px;
+    font-size: large;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.registerModalInput {
+    margin: 10px;
+    padding: 10px;
+    background-color: #76737c;
+}
+
+.registerModalButton {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+

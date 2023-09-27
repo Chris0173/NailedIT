@@ -1,4 +1,6 @@
 import {
+  Text,
+  Image,
   Box,
   Button,
   Input,
@@ -8,9 +10,12 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  HStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
+import "./LoginRegisterModal.css";
+import logo from "../../assets/logo.png";
 
 interface LoginRegisterModalProps {
   isOpen: boolean;
@@ -39,6 +44,11 @@ const LoginRegisterModal: React.FC<LoginRegisterModalProps> = ({
       .post("http://localhost:3001/api/auth/login", loginData)
       .then((response) => {
         console.log("Login successful:", response.data);
+        // Clear Input
+        setLoginEmail("");
+        setLoginPassword("");
+        // Close Modal
+        onClose();
       })
       .catch((error) => {
         console.error("Login failed:", error);
@@ -57,6 +67,10 @@ const LoginRegisterModal: React.FC<LoginRegisterModalProps> = ({
       .post("http://localhost:3001/api/auth/register", registerData)
       .then((response) => {
         console.log("Registration successful:", response.data);
+        setRegisterFirstName("");
+        setRegisterLastName("");
+        setRegisterEmail("");
+        setRegisterPassword("");
       })
       .catch((error) => {
         console.error("Registration failed:", error);
@@ -67,59 +81,83 @@ const LoginRegisterModal: React.FC<LoginRegisterModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose} size="lg">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Login / Register</ModalHeader>
+        <ModalHeader className="loginRegisterModalHeader">
+          <HStack justifyContent="space-between">
+            <Text>Login / Register</Text>
+            <Image src={logo} width="100px" />
+          </HStack>
+        </ModalHeader>
         <ModalCloseButton />
-        <ModalBody>
+        <ModalBody className="loginRegisterModalBody">
           <Box display="flex">
             {/* Login Section */}
             <Box flex={1} mr={2}>
-              <h2>Login</h2>
+              <h2 className="loginModalTitle">
+                Have an account? <br />
+                Login Here!
+              </h2>
               <Input
+                className="loginModalInput"
                 type="text"
                 placeholder="Email"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
               />
               <Input
+                className="loginModalInput"
                 type="password"
                 placeholder="Password"
                 value={loginPassword}
                 onChange={(e) => setLoginPassword(e.target.value)}
               />
-              <Button colorScheme="orange" onClick={handleLogin}>
+              <Button
+                colorScheme="orange"
+                onClick={handleLogin}
+                className="loginModalButton"
+              >
                 Login
               </Button>
             </Box>
 
             {/* Register Section */}
             <Box flex={1} ml={2}>
-              <h2>Register</h2>
+              <h2 className="registerModalTitle">
+                Not a user? <br /> Register Here!
+              </h2>
               <Input
+                className="registerModalInput"
                 type="text"
                 placeholder="First Name"
                 value={registerFirstName}
                 onChange={(e) => setRegisterFirstName(e.target.value)}
               />
               <Input
+                className="registerModalInput"
                 type="text"
                 placeholder="Last Name"
                 value={registerLastName}
                 onChange={(e) => setRegisterLastName(e.target.value)}
               />
               <Input
+                className="registerModalInput"
                 type="text"
                 placeholder="Email"
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
               />
               <Input
+                className="registerModalInput"
                 type="password"
                 placeholder="Password"
                 value={registerPassword}
                 onChange={(e) => setRegisterPassword(e.target.value)}
               />
 
-              <Button colorScheme="orange" onClick={handleRegister}>
+              <Button
+                colorScheme="orange"
+                onClick={handleRegister}
+                className="registerModalButton"
+              >
                 Register
               </Button>
             </Box>
