@@ -20,11 +20,13 @@ import logo from "../../assets/logo.png";
 interface LoginRegisterModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onLoginSuccess: () => void;
 }
 
 const LoginRegisterModal: React.FC<LoginRegisterModalProps> = ({
   isOpen,
   onClose,
+  onLoginSuccess,
 }) => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -43,10 +45,17 @@ const LoginRegisterModal: React.FC<LoginRegisterModalProps> = ({
     axios
       .post("http://localhost:3001/api/auth/login", loginData)
       .then((response) => {
+        console.log("Login response:", response);
         console.log("Login successful:", response.data);
+        // Store user Token
+        localStorage.setItem("userToken", response.data.token);
+        // Log stored Token
+        console.log("Stored token:", localStorage.getItem("userToken"));
         // Clear Input
         setLoginEmail("");
         setLoginPassword("");
+        // Callback to update login state
+        onLoginSuccess();
         // Close Modal
         onClose();
       })
