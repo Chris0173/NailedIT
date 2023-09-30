@@ -5,13 +5,15 @@ import { useState } from "react";
 import LoginRegisterModal from "../login/LoginRegisterModal";
 
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    !!localStorage.getItem("isLoggedIn")
+  );
 
   const handleLoginToggle = () => {
     setIsLoggedIn((prevIsLoggedIn) => !prevIsLoggedIn);
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(!isLoggedIn);
 
   const handleModalOpen = () => {
     setIsModalOpen(true);

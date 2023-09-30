@@ -58,6 +58,9 @@ const LoginRegisterModal: React.FC<LoginRegisterModalProps> = ({
         onLoginSuccess();
         // Close Modal
         onClose();
+        // Store login in local storage
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userEmail", loginEmail);
       })
       .catch((error) => {
         console.error("Login failed:", error);
