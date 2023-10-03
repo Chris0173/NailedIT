@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AddInventory from "../components/inventory/AddInventory";
+import AddInventoryModal from "../components/inventory/AddInventoryModal";
 import "../CSS/Pages.css";
+import { Button } from "@chakra-ui/react";
+import "../components/inventory/Inventory.css";
 
 interface InventoryItem {
   id: number;
@@ -11,6 +13,7 @@ interface InventoryItem {
 
 const InventoryPage = () => {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
+  const [isAddInventoryModalOpen, setIsAddInventoryModalOpen] = useState(false);
 
   useEffect(() => {
     fetchInventory();
@@ -30,28 +33,39 @@ const InventoryPage = () => {
     }
   };
 
+  const handleAddInventoryModalOpen = () => {
+    setIsAddInventoryModalOpen(true);
+  };
+
+  const handleAddInventoryModalClose = () => {
+    setIsAddInventoryModalOpen(false);
+  };
+
   return (
     <div className="page">
       <div className="inventoryPageContainer">
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Quantity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {inventory.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.title}</td>
-                <td>{item.quantity}</td>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Quantity</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <AddInventory />
+            </thead>
+            <tbody>
+              {inventory.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.title}</td>
+                  <td>{item.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <Button onClick={handleAddInventoryModalOpen} colorScheme="yellow">Add Inventory</Button>
+        <AddInventoryModal isOpen={isAddInventoryModalOpen} onClose={handleAddInventoryModalClose}/>
       </div>
     </div>
   );

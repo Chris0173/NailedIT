@@ -113,7 +113,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
             <Button
               className="addPriorityButton"
               type="submit"
-              colorScheme="orange"
+              colorScheme="yellow"
               mt={4}
             >
               Add Priority
