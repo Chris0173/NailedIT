@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import AddInventory from "../components/inventory/AddInventory";
+import "../CSS/Pages.css";
 
 interface InventoryItem {
   id: number;
@@ -30,7 +31,7 @@ const InventoryPage = () => {
   };
 
   return (
-    <div className="inventoryPage">
+    <div className="page">
       <div className="inventoryPageContainer">
         <table>
           <thead>

@@ -95,7 +95,8 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
   };
 
   return (
-    <Card className="card">
+    <Card>
+      <div className="cardContent">
       {/* Project Card Header */}
       <CardHeader className="projectHeading">
         <Heading size={"md"}>{project.title}</Heading>
@@ -126,6 +127,7 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
           onConfirm={handleDeleteConfirmed}
         />
       </CardFooter>
+      </div>
 
       {/* Project Details Modal */}
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} size="xl">
@@ -163,7 +165,7 @@ function ProjectCard({ project, handleDelete }: ProjectCardProps) {
             >
               Mark as Completed
             </Checkbox>
-            <Button onClick={handleCloseModal} colorScheme="orange">
+            <Button onClick={handleCloseModal} colorScheme="yellow">
               Close
             </Button>
           </ModalFooter>

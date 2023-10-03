@@ -7,7 +7,7 @@
 }
 
 .completedProjects {
-    background-color: #76737c;
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
 }
@@ -15,8 +15,10 @@
 .completedProjectTitle {
     font-size: x-large;
     font-weight: 500;
-    color: white;
+    color: #474454;
     margin-bottom: 20px;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .CompletedCard {

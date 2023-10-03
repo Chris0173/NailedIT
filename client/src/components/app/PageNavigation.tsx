@@ -21,7 +21,7 @@ const DropNavigation: React.FC<DropNavigationProps> = () => {
           as={Button}
           rightIcon={<ChevronDownIcon />}
           className="pagesButton"
-          color="wheat"
+          colorScheme="yellow"
         >
           {selectedPage}
         </MenuButton>

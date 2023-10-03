@@ -6,11 +6,12 @@ import {
   AccordionIcon,
 } from "@chakra-ui/accordion";
 import "../CSS/DocumentsPage.css";
+import "../CSS/Pages.css";
 import { Box, Divider } from "@chakra-ui/react";
 
 const DocumentsPage = () => {
   return (
-    <div className="documentsPage">
+    <div className="page">
       <h1 className="documentsTitle">Documents:</h1>
       <div className="documentsContainer">
         <Accordion allowToggle>

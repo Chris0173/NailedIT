@@ -37,7 +37,7 @@ const addPriority = (req, res) => {
 const deletePriority = (req, res) => {
     const priorityId = req.params.id;
 
-    db.query('DELETE FROM top_priorities WHERE id = ?', [priorityId], (err, result) => {
+    db.query('DELETE FROM top_priorities WHERE priority_id = ?', [priorityId], (err, result) => {
         if (err) {
             console.error('Error deleting priority from MySQL:', err);
             res.status(500).json({ error: 'Error deleting priority' });

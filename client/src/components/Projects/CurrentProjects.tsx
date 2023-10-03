@@ -55,7 +55,7 @@ const CurrentProjects = () => {
       })
       .then(() => {
         const updatedProjects = currentProjects.filter(
-          (project) => project.id !== projectId
+          (project) => project.project_id !== projectId
         );
         setCurrentProjects(updatedProjects);
       })
@@ -97,7 +97,7 @@ const CurrentProjects = () => {
             <Button
               className="addProjectButton"
               rightIcon={<AddIcon />}
-              colorScheme="orange"
+              colorScheme="yellow"
               variant="solid"
               onClick={handleOnclick}
             >

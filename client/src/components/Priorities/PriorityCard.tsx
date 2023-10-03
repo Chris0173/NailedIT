@@ -13,7 +13,7 @@ import DeletionConfirmationModal from "../app/DeletionConfirmationModal";
 
 interface PriorityCardProps {
   priorityData: priorityFormData;
-  onDelete: (id: number) => void;
+  onDelete: (priority_id: number) => void;
 }
 
 const PriorityCard: React.FC<PriorityCardProps> = ({
@@ -29,7 +29,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
 
   // Handle confirmation to delete
   const handleConfirmDelete = () => {
-    onDelete(priorityData.id);
+    onDelete(priorityData.priority_id);
     setIsConfirmationModalOpen(false);
   };
 
@@ -62,7 +62,7 @@ const PriorityCard: React.FC<PriorityCardProps> = ({
   const formattedCreatedAt = new Date(priorityData.created_at).toLocaleString();
 
   return (
-    <Box borderWidth="1px" borderRadius="lg" p="4" m="2">
+    <Box borderWidth="1px" borderRadius="lg" p="4" m="2" className="topPriorityCard">
       <HStack justifyContent="space-between">
         <Heading size="md">{priorityData.priority_name}</Heading>
         <Badge colorScheme={priorityLevelColor} mt="2">

@@ -84,7 +84,7 @@ const TopPriorities = () => {
         return response.json();
       })
       .then(() => {
-        setPriorities(priorities.filter((priority) => priority.id !== id));
+        setPriorities(priorities.filter((priority) => priority.priority_id !== id));
         console.log("Priority deleted successfully");
       })
       .catch((error) => {
@@ -93,42 +93,42 @@ const TopPriorities = () => {
   };
 
   return (
-    <div className="cardContainer">
-      <Card align="center">
-        <CardHeader>
-          <Heading size="md">Top Priorities:</Heading>
-        </CardHeader>
-        <CardBody>
-          <Stack divider={<StackDivider />} spacing="4">
-            {/* Add Priority button */}
-            <Button
-              className="addTopPriorityButton"
-              rightIcon={<AddIcon />}
-              colorScheme="orange"
-              variant="solid"
-              onClick={handleAddPriority}
-            >
-              Add Priority
-            </Button>
-
-            {/* PriorityFormModal */}
-            <PriorityFormModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              onSubmit={handleSubmit}
-            />
-
-            {/* Displaying each priority */}
-            {priorities.map((priority, index) => (
-              <PriorityCard
-                key={index}
-                priorityData={priority}
-                onDelete={handleDeletePriority}
+    <div className="topPriorities">
+      <div className="cardContainer">
+        <Card align="center">
+          <CardHeader>
+            <Heading size="md">Top Priorities:</Heading>
+          </CardHeader>
+          <CardBody>
+            <Stack divider={<StackDivider />} spacing="4">
+              {/* Add Priority button */}
+              <Button
+                className="addTopPriorityButton"
+                rightIcon={<AddIcon />}
+                colorScheme="yellow"
+                variant="solid"
+                onClick={handleAddPriority}
+              >
+                Add Priority
+              </Button>
+              {/* PriorityFormModal */}
+              <PriorityFormModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                onSubmit={handleSubmit}
               />
-            ))}
-          </Stack>
-        </CardBody>
-      </Card>
+              {/* Displaying each priority */}
+              {priorities.map((priority, index) => (
+                <PriorityCard
+                  key={index}
+                  priorityData={priority}
+                  onDelete={handleDeletePriority}
+                />
+              ))}
+            </Stack>
+          </CardBody>
+        </Card>
+      </div>
     </div>
   );
 };

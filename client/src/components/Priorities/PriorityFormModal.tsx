@@ -19,7 +19,7 @@ interface PriorityFormModalProps {
 }
 
 export interface priorityFormData {
-  id: number;
+  priority_id: number;
   priority_name: string;
   description: string;
   priority_level: number | string;
@@ -33,7 +33,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
   onSubmit,
 }) => {
   const [formData, setFormData] = useState<priorityFormData>({
-    id: 0,
+    priority_id: 0,
     priority_name: "",
     description: "",
     priority_level: "",
@@ -52,7 +52,7 @@ const PriorityFormModal: React.FC<PriorityFormModalProps> = ({
     e.preventDefault();
     onSubmit(formData);
     setFormData({
-      id: 0,
+      priority_id: 0,
       priority_name: "",
       description: "",
       priority_level: "",
