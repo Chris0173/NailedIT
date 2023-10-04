@@ -24,7 +24,21 @@ const addItemToInventory = (req, res) => {
   });
 };
 
+const deleteItemFromInventory = (req, res) => {
+  const itemId = req.params.id;
+
+  db.query('DELETE FROM inventory WHERE id = ?', [itemId], (error) => {
+    if (error) {
+      console.error('Error deleting item:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json({ message: 'Item deleted successfully' });
+    }
+  });
+};
+
 module.exports = {
   getInventory,
-  addItemToInventory
+  addItemToInventory,
+  deleteItemFromInventory
 };
