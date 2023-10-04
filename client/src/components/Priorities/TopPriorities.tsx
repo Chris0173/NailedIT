@@ -4,7 +4,9 @@ import {
   Card,
   CardBody,
   CardHeader,
+  HStack,
   Heading,
+  Input,
   Select,
   Stack,
   StackDivider,
@@ -19,10 +21,11 @@ const TopPriorities = () => {
   const [priorities, setPriorities] = useState<priorityFormData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [orderCriteria, setOrderCriteria] = useState<string>('priority_level');
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   // Fetch priorities when the component mounts
   useEffect(() => {
-    fetch(`http://localhost:3001/api/priorities?order=${orderCriteria}`)
+    fetch(`http://localhost:3001/api/priorities?order=${orderCriteria}&search=${searchQuery}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch priorities");
@@ -35,16 +38,23 @@ const TopPriorities = () => {
       .catch((error) => {
         console.log("Error fetching priorities:", error);
       });
-  }, [orderCriteria]);
+  }, [orderCriteria, searchQuery]);
 
   // Handle adding a priority
   const handleAddPriority = () => {
     setIsModalOpen(true);
   };
 
-  // Handle changing order
+  // Handle Order Change
   const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setOrderCriteria(event.target.value);
+    const newOrderCriteria = event.target.value;
+    setOrderCriteria(newOrderCriteria);
+  };
+
+  // Handle Priority Search
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearchQuery = event.target.value;
+    setSearchQuery(newSearchQuery);
   };
 
   // Handle submitting a priority
@@ -118,17 +128,27 @@ const TopPriorities = () => {
               >
                 Add Priority
               </Button>
-              {/* Order selection dropdown */}
-              <Select
-                width="200px"
-                mt={2}
-                value={orderCriteria}
-                onChange={handleOrderChange}
-              >
-                <option value="priority_level">Priority Level</option>
-                <option value="required_by">Required By Date</option>
-                <option value="created_at">Created Date</option>
-              </Select>
+              <HStack justifyContent='space-between'>
+                {/* Order selection dropdown */}
+                <Select
+                  width="200px"
+                  mt={2}
+                  value={orderCriteria}
+                  onChange={handleOrderChange}
+                >
+                  <option value="priority_level">Priority Level</option>
+                  <option value="required_by">Required By Date</option>
+                  <option value="created_at">Created Date</option>
+                </Select>
+                {/* Search input */}
+                <Input
+                  width="300px"
+                  type="text"
+                  placeholder="Search priorities"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </HStack>
               {/* PriorityFormModal */}
               <PriorityFormModal
                 isOpen={isModalOpen}

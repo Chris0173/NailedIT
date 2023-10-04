@@ -2,10 +2,25 @@ const db = require('../db');
 
 // Retrieve all priorities from the database
 const getPriorities = (req, res) => {
-    const { order } = req.query;
+    const { order, search } = req.query;
     let sql = 'SELECT * FROM top_priorities';
   
-    // Check the order parameter and modify the SQL query accordingly
+    // Check if a search query is provided 
+  if (search) {
+    const searchTerm = `%${search}%`; 
+    sql += ' WHERE priority_name LIKE ? OR description LIKE ?';
+    const values = [searchTerm, searchTerm];
+    db.query(sql, values, (err, results) => {
+      if (err) {
+        console.error('Error fetching priorities from MySQL:', err);
+        res.status(500).json({ error: 'Error fetching priorities' });
+      } else {
+        res.json(results);
+      }
+    });
+  } else {
+    // If no search query, proceed with regular SQL query for ordering
+    // Check order parameter 
     switch (order) {
       case 'priority_level':
         sql += ' ORDER BY priority_level';
@@ -17,11 +32,9 @@ const getPriorities = (req, res) => {
         sql += ' ORDER BY created_at';
         break;
       default:
-        // Default order by priority_level 
         sql += ' ORDER BY priority_level';
         break;
     }
-  
     db.query(sql, (err, results) => {
       if (err) {
         console.error('Error fetching priorities from MySQL:', err);
@@ -30,7 +43,8 @@ const getPriorities = (req, res) => {
         res.json(results);
       }
     });
-  };
+  }
+};
   
 
 // Add a new priority to the database
