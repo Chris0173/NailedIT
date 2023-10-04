@@ -6,5 +6,6 @@ const prioritiesController = require('../controllers/prioritiesController');
 router.get('/', prioritiesController.getPriorities); // GET request to retrieve all priorities
 router.post('/', prioritiesController.addPriority); // POST request to add a new priority
 router.delete('/:id', prioritiesController.deletePriority); // DELETE request to delete a priority by ID
+router.get('/', prioritiesController.getPriorities); // GET request to retrieve priorities in specified order
 
 module.exports = router;

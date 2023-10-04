@@ -5,6 +5,7 @@ import {
   CardBody,
   CardHeader,
   Heading,
+  Select,
   Stack,
   StackDivider,
 } from "@chakra-ui/react";
@@ -17,10 +18,11 @@ const TopPriorities = () => {
   // State to manage priorities and modal visibilit
   const [priorities, setPriorities] = useState<priorityFormData[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [orderCriteria, setOrderCriteria] = useState<string>('priority_level');
 
   // Fetch priorities when the component mounts
   useEffect(() => {
-    fetch("http://localhost:3001/api/priorities")
+    fetch(`http://localhost:3001/api/priorities?order=${orderCriteria}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch priorities");
@@ -33,11 +35,16 @@ const TopPriorities = () => {
       .catch((error) => {
         console.log("Error fetching priorities:", error);
       });
-  }, []);
+  }, [orderCriteria]);
 
   // Handle adding a priority
   const handleAddPriority = () => {
     setIsModalOpen(true);
+  };
+
+  // Handle changing order
+  const handleOrderChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setOrderCriteria(event.target.value);
   };
 
   // Handle submitting a priority
@@ -111,6 +118,17 @@ const TopPriorities = () => {
               >
                 Add Priority
               </Button>
+              {/* Order selection dropdown */}
+              <Select
+                width="200px"
+                mt={2}
+                value={orderCriteria}
+                onChange={handleOrderChange}
+              >
+                <option value="priority_level">Priority Level</option>
+                <option value="required_by">Required By Date</option>
+                <option value="created_at">Created Date</option>
+              </Select>
               {/* PriorityFormModal */}
               <PriorityFormModal
                 isOpen={isModalOpen}
