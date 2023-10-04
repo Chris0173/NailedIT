@@ -37,8 +37,23 @@ const deleteItemFromInventory = (req, res) => {
   });
 };
 
+const adjustInventoryQuantity = (req, res) => {
+  const itemId = req.params.id;
+  const adjustment = req.body.adjustment;
+
+  db.query('UPDATE inventory SET quantity = quantity + ? WHERE id = ?', [adjustment, itemId], (error) => {
+    if (error) {
+      console.error('Error adjusting item quantity:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } else {
+      res.json({ message: 'Item quantity adjusted successfully' });
+    }
+  });
+};
+
 module.exports = {
   getInventory,
   addItemToInventory,
-  deleteItemFromInventory
+  deleteItemFromInventory,
+  adjustInventoryQuantity
 };
