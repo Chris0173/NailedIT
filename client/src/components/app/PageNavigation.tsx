@@ -46,11 +46,6 @@ const DropNavigation: React.FC<DropNavigationProps> = () => {
               Inventory
             </ChakraLink>
           </MenuItem>
-          <MenuItem onClick={() => handleMenuItemClick("Calendar")}>
-            <ChakraLink as={ReactRouterLink} to="/calendar">
-              Calendar
-            </ChakraLink>
-          </MenuItem>
         </MenuList>
       </Menu>
     </>

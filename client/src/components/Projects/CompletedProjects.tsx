@@ -20,7 +20,7 @@ const CompletedProjects = () => {
       })
       .then(() => {
         const updatedProjects = completedProjects.filter(
-          (project) => project.id !== projectId
+          (project) => project.project_id !== projectId
         );
         setCompletedProjects(updatedProjects);
       })
